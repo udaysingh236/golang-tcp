@@ -32,7 +32,7 @@ func main() {
 		fmt.Println("Error while Listening...!!", err)
 		os.Exit(1)
 	}
-
+	fmt.Println("Server started listening....")
 	defer listener.Close()
 	///Receive Several conection
 	for {
@@ -41,12 +41,14 @@ func main() {
 			fmt.Println("Error while Accepting...!!", err)
 			os.Exit(1)
 		}
+		fmt.Println("Connection accepted...!!")
 		go func() {
 			for {
 				if !CollectandValidate(conn) {
 					break
 				}
 			}
+			fmt.Println("Closing the conection..!!")
 			conn.Close()
 		}()
 

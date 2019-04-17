@@ -16,6 +16,7 @@ func readNextByte(conn net.Conn, number uint32) ([]byte, bool) {
 
 	_, err := io.ReadFull(conn, bytes)
 	if err == io.EOF || err == io.ErrUnexpectedEOF {
+		fmt.Println("Error while reading..", err)
 		return nil, false
 	}
 	if err != nil {
@@ -29,8 +30,11 @@ func readNextByte(conn net.Conn, number uint32) ([]byte, bool) {
 func CollectandValidate(conn net.Conn) bool {
 	buff, error := readNextByte(conn, 10)
 	if !error {
-		// fmt.Println("Something bad with Reading data maybe EOF")
-		return true
+		fmt.Println("Something bad with Reading data maybe EOF")
+		//++Commit-I - close the conn when eof or uneof
+			// return true
+			return false
+		//--Commit-I - close the conn when eof or uneof
 	}
 	RequestQueue <- ClientRequest{buff, conn}
 	return true
