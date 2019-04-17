@@ -27,7 +27,7 @@ var (
 //github.com/udaysingh236
 func main() {
 	StartDispatcher(*Nworkers)
-	listener, err := net.Listen("tcp", "127.0.0.1:3333")
+	listener, err := net.Listen("tcp", "0.0.0.0:3333")
 	if err != nil {
 		fmt.Println("Error while Listening...!!", err)
 		os.Exit(1)
