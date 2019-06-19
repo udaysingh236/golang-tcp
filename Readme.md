@@ -20,4 +20,3 @@ App is structured in four goroutines to perform four basic tasks of TCP server
 2.       Dispatch one request message at a time to a worker
 3.       Process request message (Business logic)
 4.       Write to TCP port
-![alt text](https://github.com/aniketchopade/golang-tcp/blob/master/app-structure.png)
