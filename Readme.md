@@ -13,3 +13,11 @@ Usage of D:\GOPO\tcp-worker:
         The number of workers you want to run..! (default 4)
 
 ./tcp-worker -worker 100
+
+App is structured in four goroutines to perform four basic tasks of TCP server
+
+1.       Read from TCP port, break input stream into frames
+2.       Dispatch one request message at a time to a worker
+3.       Process request message (Business logic)
+4.       Write to TCP port
+![app structure image](https://github.com/aniketchopade/golang-tcp/blob/master/app-structure.png)
